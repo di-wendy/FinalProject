@@ -39,15 +39,14 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Firebase Chat</h1>
         </header>
-
+        <div>
+          <InputForm chat={this.chat}/>
+        </div>
         <div>
           <OutputForm messages={this.props.messages}
           onScrolled={e => console.log('the list was scrolled')}/>
         </div>
-        <div>
-          <InputForm chat={this.chat}/>
-          <button type="button">Receive</button>
-          </div>
+       
       </div>
     );
   }
