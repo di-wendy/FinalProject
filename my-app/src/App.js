@@ -6,6 +6,8 @@ import { InputForm } from './components/InputForm'
 import BootcampChat from 'bootcamp-firebase-chat';
 import {messageReceived} from './components/reducer'
 
+//Redux related
+import { connect } from 'react-redux'
 
 const config = {
   apiKey: 'AIzaSyD7e-xTlPbwolUJodCIH3N2h55VGLVKoDo',
@@ -17,14 +19,24 @@ const config = {
 }
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      messageslol: []
+    }
+  }
+  
   componentDidMount() {
-    const chat = new BootcampChat(config)
-    chat.onMessage((id, message) => {
+    this.chat = new BootcampChat(config);
+    // const id = chat.send((payload))
+    const messages = this.chat.onMessage((id, message) => {
       this.props.messageReceived(id, message)
     })
   }
 
   render() {
+    console.log('RENDERING')
     return (
       <div className="App">
         <header className="App-header">
@@ -33,11 +45,11 @@ class App extends Component {
         </header>
 
         <div>
-          <OutputForm />
+          <OutputForm messages={this.props.messages}/>
         </div>
         <div>
-          <InputForm />
-          <button type="button" onClick={toSend}>Receive</button>
+          <InputForm chat={this.chat}/>
+          <button type="button">Receive</button>
           </div>
       </div>
     );

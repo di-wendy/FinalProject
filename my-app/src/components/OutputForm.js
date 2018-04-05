@@ -5,7 +5,7 @@ import { Individual } from './Individual';
 export class OutputForm extends React.Component {
     render(){
         return(<div>
-            <Individual />
+                {this.props.messages.map(message => <Individual message={message}/>)}
             </div>
         )
     }
