@@ -1,12 +1,18 @@
 import * as React from 'react';
 
-export class individual extends React.Component {
+export class Individual extends React.Component {
     
     render(){
         return(
             <div>
-                <h1>Test</h1>
-                </div>
+                <span>
+                    <h2 className='Name'>Di Wang</h2>
+                </span>
+                <span>
+                    <p>Hello World</p>
+                    <img src='https://www.gstatic.com/webp/gallery/4.sm.jpg'/>
+                </span>
+            </div>
         )
     }
 }
