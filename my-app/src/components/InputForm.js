@@ -12,21 +12,21 @@ export class InputForm extends React.Component {
     }
 
     render(){
-        return(<form>
-                <div class="form-row">
-                <div class="form-group col-md-6">
+        return(<form className="form">
+                <div className="form-row">
+                <div className="form-group col-md-6">
                     <label htmlFor="name" >Name</label>
-                        <input type="text" id="name" name="nameInput" ref={this.nameRef}/>
+                        <input className='nameInput' type="text" id="name" name="nameInput" ref={this.nameRef}/>
                 </div>
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="message">Message</label>
                         <input type="text" id="message" name="messageInput" ref={this.messageRef}/>
                 </div>
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                 <label htmlFor="image">Image</label>
                     <input type="text" id="image" name="imageInput" ref={this.imageRef}/>
                 </div>
-                <button type="button" onClick={()=> {
+                <button className="btn btn-primary btn-lg" type="button" onClick={()=> {
                     if(this.nameRef.current.value.length === 0){
                         alert("Name must be at least 1 character")
                     }

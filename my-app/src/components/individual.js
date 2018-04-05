@@ -10,7 +10,7 @@ export class Individual extends React.Component {
                 </span>
                 <span>
                     <p>{this.props.message.message}</p>
-                    <img src={this.props.message.image}/>
+                    <img className="img" src={this.props.message.image}/>
                 </span>
             </div>
         )

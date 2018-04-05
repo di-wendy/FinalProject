@@ -6,9 +6,9 @@ import autoscroll from 'autoscroll-react'
 
 class OutputForm extends React.Component {
     render(){
-        return(<div>
-                {this.props.messages.map(message => <Individual message={message}/>)}
-            </div>
+        return(<container className='crollDiv'>
+                {this.props.messages.map(message => <Individual key={message.creatAt} message={message}/>)}
+            </container>
         )
     }
 }
