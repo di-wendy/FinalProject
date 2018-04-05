@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { OutputForm } from './components/OutputForm'
+import OutputForm from './components/OutputForm'
 import { InputForm } from './components/InputForm'
 import BootcampChat from 'bootcamp-firebase-chat';
 import {messageReceived} from './components/reducer'
@@ -22,14 +22,10 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      messageslol: []
-    }
   }
   
   componentDidMount() {
     this.chat = new BootcampChat(config);
-    // const id = chat.send((payload))
     const messages = this.chat.onMessage((id, message) => {
       this.props.messageReceived(id, message)
     })
@@ -45,7 +41,8 @@ class App extends Component {
         </header>
 
         <div>
-          <OutputForm messages={this.props.messages}/>
+          <OutputForm messages={this.props.messages}
+          onScrolled={e => console.log('the list was scrolled')}/>
         </div>
         <div>
           <InputForm chat={this.chat}/>

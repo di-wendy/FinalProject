@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 
 export class InputForm extends React.Component {
 
@@ -20,30 +20,41 @@ export class InputForm extends React.Component {
                 <label htmlFor="image">Image</label>
                     <input type="text" id="image" name="imageInput" ref={this.imageRef}/>
                 <button type="button" onClick={()=> {
-                    this.props.chat.send({
-                        name : this.nameRef.current.value,
-                        message : this.messageRef.current.value,
-                        image : this.imageRef.current.value
-                    }).then(({id}) => {
-                        console.log(id)
-                    }).catch(e => {
-                        console.log(e)
-                    })
+                    if(this.nameRef.current.value.length === 0){
+                        alert("Name must be at least 1 character")
+                    }
+                    else{
+                        if (this.imageRef.current.value.length >0){
+                            if(this.imageRef.current.value.startsWith('http://') && 
+                            this.imageRef.current.value.endsWith('.jpg')){
+                                this.props.chat.send({
+                                    name : this.nameRef.current.value.value,
+                                    message : this.messageRef.current.value,
+                                    image : this.imageRef.current.value
+                                }).then(({id}) => {
+                                    console.log(id)
+                                }).catch(e => {
+                                    console.log(e)
+                                })
+                            }
+                            else{
+                                alert("Image must be a URL");
+                            }
+                        }
+                        else{
+                            this.props.chat.send({
+                                name : this.nameRef.current.value,
+                                message : this.messageRef.current.value
+                            }).then(({id}) => {
+                                console.log(id)
+                            }).catch(e => {
+                                console.log(e)
+                            })
+                        }
+                    }
                     
                 }}>Send</button>
             </form>
         )
     }
 }
-
-/*
-const mapStateToProps = state => {
-    return {
-      name: state.name,
-      message: state.message,
-      image: state.image
-    }
-}
-
-export default connect(mapStateToProps, null)(InputForm)
-*/
