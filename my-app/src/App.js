@@ -4,7 +4,7 @@ import './App.css';
 import OutputForm from './components/OutputForm'
 import { InputForm } from './components/InputForm'
 import BootcampChat from 'bootcamp-firebase-chat';
-import {messageReceived} from './components/reducer'
+import {messageReceived, sentMessage, sendingMesssage, SendMessages} from './components/reducer'
 
 //Redux related
 import { connect } from 'react-redux'
@@ -19,10 +19,6 @@ const config = {
 }
 
 class App extends Component {
-
-  constructor() {
-    super();
-  }
   
   componentDidMount() {
     this.chat = new BootcampChat(config);
@@ -51,4 +47,11 @@ class App extends Component {
   }
 }
 
-export default connect(state => state, {messageReceived})(App);
+const mapDispatchToProps = {
+  messageReceived, 
+  sentMessage, 
+  sendingMesssage, 
+  SendMessages
+}
+
+export default connect(state => state, mapDispatchToProps)(App);

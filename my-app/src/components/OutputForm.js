@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Individual } from './Individual';
 
 import autoscroll from 'autoscroll-react'

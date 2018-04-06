@@ -1,3 +1,5 @@
+import thunk from 'redux-thunk';
+
 const MESSAGE_RECEIVED = 'MESSAGE_RECEIVED'
 const MESSAGE_SENT = 'MESSAGE_SENT'
 const SENDING_MESSAGE = 'SENDING_MESSAGE'
@@ -35,4 +37,56 @@ export default (state = {messages:[]}, action) => {
     default:
       return state
   }
+}
+
+export const SendMessages = (chat, name, message, image) => async dispatch => {
+  if(name.length === 0){
+    alert("Name must be at least 1 character")
+  }
+  else{
+    if (image.length > 0){
+              if(image.startsWith('http'))
+              {
+                if(message.length===0){
+                  chat.send({
+                      name : name,
+                      image : image
+                  }).then(({id}) => {
+                      //console.log(id)
+                  }).catch(e => {
+                      console.log(e)
+                  })
+                }
+                else{
+                  chat.send({
+                    name: name,
+                    message: message,
+                    image: image
+                    }).then(({id}) => {
+                      dispatch(messageReceived(id, message))
+                    }).catch(e => {
+                      console.log(e)
+                    })
+                }
+              }
+              else{
+                  alert("Image must be a valid URL");
+              }
+          }
+          else {
+              if(message.length === 0){
+                  alert("Please enter message or image url")
+              }
+              else{
+                  chat.send({
+                      name : name,
+                      message : message
+                  }).then(({id}) => {
+                      //console.log(id)
+                  }).catch(e => {
+                      console.log(e)
+                  })
+              }
+          }
+      }
 }
