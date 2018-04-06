@@ -13,11 +13,9 @@ export class InputForm extends React.Component {
 
     render(){
         return(<form className="form">
-                <div className="form-row">
                 <div className="form-group col-md-6">
                     <label htmlFor="name" >Name</label>
                         <input className='nameInput' type="text" id="name" name="nameInput" ref={this.nameRef}/>
-                </div>
                 <div className="form-group col-md-6">
                     <label htmlFor="message">Message</label>
                         <input type="text" id="message" name="messageInput" ref={this.messageRef}/>
@@ -39,7 +37,7 @@ export class InputForm extends React.Component {
                                     message : this.messageRef.current.value,
                                     image : this.imageRef.current.value
                                 }).then(({id}) => {
-                                    console.log(id)
+                                    //console.log(id)
                                 }).catch(e => {
                                     console.log(e)
                                 })
@@ -53,7 +51,7 @@ export class InputForm extends React.Component {
                                 name : this.nameRef.current.value,
                                 message : this.messageRef.current.value
                             }).then(({id}) => {
-                                console.log(id)
+                                //console.log(id)
                             }).catch(e => {
                                 console.log(e)
                             })

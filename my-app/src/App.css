@@ -24,7 +24,7 @@
 
 .Name {
   float: left;
-  margin-left: 20px
+  margin-left: 30px
 }
 
 label{
@@ -40,6 +40,7 @@ label{
 
 input {
   display: inline-block;
+  width:300px;
   font-size: 16px;
   margin-bottom: 10px;
   margin-left: 50px;
@@ -50,8 +51,7 @@ button{
     font-size: 16px;
     padding: 10px 20px;
     text-align: center;
-    display:inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .img{
@@ -64,7 +64,7 @@ button{
 
 .scrollDiv{
   height: 500px;
-  overflow: auto;
+  overflow: scroll
 }
 
 @keyframes App-logo-spin {

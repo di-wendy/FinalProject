@@ -43,8 +43,7 @@ class App extends Component {
           <InputForm chat={this.chat}/>
         </div>
         <div>
-          <OutputForm messages={this.props.messages}
-          onScrolled={e => console.log('the list was scrolled')}/>
+          <OutputForm messages={this.props.messages}/>
         </div>
        
       </div>

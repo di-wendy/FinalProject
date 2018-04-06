@@ -29,7 +29,6 @@ export default (state = {messages:[]}, action) => {
     case MESSAGE_RECEIVED:
       return {...state, messages: [...state.messages, action.message]}
     case SENDING_MESSAGE:
-      
       return state
     case MESSAGE_SENT:
       return state
